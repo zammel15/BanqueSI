@@ -1,0 +1,61 @@
+package com.ZLK.BanqueSI.Entities;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
+
+@Entity
+public class Employe implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long CodeEmploye ;
+    private String NomEmploye ;
+    @ManyToOne
+    @JoinColumn(name = "COD_EM_SUP")
+    private Employe employeSup ;
+
+    @ManyToMany
+    @JoinTable(name = "EMP_GR")
+    private Collection<Group> groupes ;
+
+
+    public Employe() {
+    }
+
+    public Employe(String nomEmploye) {
+        NomEmploye = nomEmploye;
+    }
+
+    public Long getCodeEmploye() {
+        return CodeEmploye;
+    }
+
+    public void setCodeEmploye(Long codeEmploye) {
+        CodeEmploye = codeEmploye;
+    }
+
+    public String getNomEmploye() {
+        return NomEmploye;
+    }
+
+    public void setNomEmploye(String nomEmploye) {
+        NomEmploye = nomEmploye;
+    }
+
+    public Employe getEmployeSup() {
+        return employeSup;
+    }
+
+    public void setEmployeSup(Employe employeSup) {
+        this.employeSup = employeSup;
+    }
+
+    public Collection<Group> getGroups() {
+        return groupes;
+    }
+
+    public void setGroups(Collection<Group> groupes) {
+        this.groupes = groupes;
+    }
+}
