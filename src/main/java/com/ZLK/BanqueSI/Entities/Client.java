@@ -13,8 +13,8 @@ public class Client implements Serializable {
 
     private String NomClient ;
 
-    @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY) //les compte seront chargen lorsque je le besoin
-    private Collection<Compt> compts ; //chaque clinet peut avoir plusieur comptes
+    @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY)
+    private Collection<Compt> compts ;
 
 
     public Client() {
@@ -33,11 +33,11 @@ public class Client implements Serializable {
     }
 
     public String getNomClient() {
-        return NomClient;
+        return this.NomClient;
     }
 
     public void setNomClient(String nomClient) {
-        NomClient = nomClient;
+        this.NomClient = nomClient;
     }
 
     public Collection<Compt> getCompts() {

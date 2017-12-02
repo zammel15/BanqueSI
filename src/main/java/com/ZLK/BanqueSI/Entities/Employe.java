@@ -1,5 +1,9 @@
 package com.ZLK.BanqueSI.Entities;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
@@ -36,17 +40,18 @@ public class Employe implements Serializable {
     }
 
     public String getNomEmploye() {
-        return NomEmploye;
+        return this.NomEmploye;
     }
 
     public void setNomEmploye(String nomEmploye) {
-        NomEmploye = nomEmploye;
+        this.NomEmploye = nomEmploye;
     }
-
+    @JsonIgnore
     public Employe getEmployeSup() {
         return employeSup;
     }
 
+    @JsonSetter
     public void setEmployeSup(Employe employeSup) {
         this.employeSup = employeSup;
     }
